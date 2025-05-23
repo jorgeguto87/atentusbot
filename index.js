@@ -170,12 +170,12 @@ client.on ('message', async msg => {
               return;
 
           case "2":
-              await enviarMensagemInicial(souCliente, '🤖 *Excelente*\n_Para agilizar o seu atendimento, escolha uma das opções *ABAIXO!* 👇\n\n1️⃣ *- Suporte técnico*\n2️⃣ *- Atualização de sistema*\n3️⃣ *- Falar com o desenvolvedor*\n4️⃣ *- Voltar ao menu principal*')
+              await enviarMensagemInicial(souCliente, '🤖 *Excelente*\nPara agilizar o seu atendimento, escolha uma das opções *ABAIXO!* 👇\n\n1️⃣ *- Suporte técnico*\n2️⃣ *- Atualização de sistema*\n3️⃣ *- Falar com o desenvolvedor*\n4️⃣ *- Voltar ao menu principal*')
               state[from] = { step: 3 };
               return;
 
           case "3":
-              await enviarMensagemInicial(especialista, '🤖 *Perfeito!*\nAntes de encaminhar a um especialista irei pedir que digite as seguintes informações:\n\n🔹 *- Nome da empresa*\n🔹 *- Tipo de projeto desejado*\n🔹 *- Nome para contato*\n\n*Após escrever as informações solicitadas digite:*\n 0️⃣ para enviar\n1️⃣ para retornar ao menu principal.');
+              await enviarMensagemInicial(especialista, '🤖 *Perfeito!*\nAntes de encaminhar a um especialista irei pedir que digite as seguintes informações:\n\n🔹 *- Nome da empresa*\n🔹 *- Tipo de projeto desejado*\n🔹 *- Nome para contato*\n\n*Após escrever as informações solicitadas digite:*\n0️⃣ para enviar\n1️⃣ para retornar ao menu principal.');
               state[from] = { step: 4 };
               return;
 
@@ -214,37 +214,38 @@ client.on ('message', async msg => {
       switch (mensagem) {
           case "1":
               await enviarMensagemInicial(chatBot, '🤖 *Chatbots de Atendimento*\n\nAutomatize seu atendimento via *WhatsApp*, *Instagram*, *Telegram* ou *Facebook Messenger*.\n\n💬 Respostas automáticas, geração de leads, integração com sistemas, agendamentos e muito mais!\n\n✅ Ideal para empresas que querem escalar o atendimento com qualidade.\n\nO que deseja?\n\n1️⃣ - Quero esse serviço\n2️⃣ - Voltar às soluções\n3️⃣ - Menu principal\n4️⃣ - Sair');
-              state[from] = { step: 7 };
+              state[from] = { step: 6 };
               return;
 
           case "2":
               await enviarMensagemInicial(sistemas, '🏢 *Sistemas Corporativos Personalizados*\n\nDesenvolvemos sistemas sob medida para automatizar processos internos da sua empresa: *ERP, CRM, controle de estoque, financeiro, gestão de vendas* e muito mais!\n\n🛠️ Integramos com sistemas já existentes ou criamos do zero.\n\nDeseja:\n\n1️⃣ - Quero esse serviço\n2️⃣ - Voltar às soluções\n3️⃣ - Menu principal\n4️⃣ - Sair');
-              state[from] = { step: 7 }; 
+              state[from] = { step: 6 }; 
               return;
 
           case "3":
               await enviarMensagemInicial(app,'📱 *Aplicativos Android/iOS*\n\nDesenvolvemos apps profissionais com design moderno e funcionalidades exclusivas para o seu negócio.\n\n🚀 Ideal para delivery, agendamento de serviços, vendas, fidelização de clientes, etc.\n\nQuer saber mais?\n\n1️⃣ - Quero esse serviço\n2️⃣ - Voltar às soluções\n3️⃣ - Menu principal\n4️⃣ - Sair');
-              state[from] = { step: 7 };
+              state[from] = { step: 6 };
               return;
 
           case "4":
               await enviarMensagemInicial(sites, '🌐 *Sites e Lojas Virtuais*\n\nCrie sua presença digital com um site profissional ou uma loja virtual completa, segura e fácil de gerenciar.\n\n💡 Otimização SEO, integração com WhatsApp, métodos de pagamento, blog e muito mais!\n\nQual opção você escolhe?\n\n1️⃣ - Quero esse serviço\n2️⃣ - Voltar às soluções\n3️⃣ - Menu principal\n4️⃣ - Sair');
-              state[from] = { step: 7 };
+              state[from] = { step: 6 };
               return;
 
           case "5":
               await enviarMensagemInicial(landing, '📄 *Landing Pages para Campanhas*\n\nAlta conversão e foco em resultados! Criamos páginas otimizadas para campanhas de tráfego pago, lançamentos e geração de leads.\n\n🎯 Design moderno, responsivo e com gatilhos de persuasão.\n\nDeseja:\n\n1️⃣ - Quero esse serviço\n2️⃣ - Voltar às soluções\n3️⃣ - Menu principal\n4️⃣ - Sair');
-              state[from] = { step: 7 };
+              state[from] = { step: 6 };
               return;
 
           case "6":
               await enviarMensagemInicial(personalizados, '🧩 *Sistemas Personalizados*\n\nTem uma ideia específica? Criamos qualquer tipo de sistema do zero, do seu jeito e para sua necessidade.\n\n🚀 Desde automações internas até plataformas completas com múltiplos usuários e painéis de controle.\n\nQual será o próximo passo?\n\n1️⃣ - Quero esse serviço\n2️⃣ - Voltar às soluções\n3️⃣ - Menu principal\n4️⃣ - Sair');
-              state[from] = { step: 7 };
+              state[from] = { step: 6 };
               return;
 
           case "7":
               await enviarMensagemTexto('🔁 Retornando ao menu principal...');
-              state[from] = { step: 6 };
+              await enviarMensagemInicial(logo, mensagemInicial);
+              state[from] = { step: 1 };
               return;
 
           default:
@@ -269,23 +270,24 @@ client.on ('message', async msg => {
   }else if (userState.step === 3) {
       switch(mensagem) {
           case "1":
-            await enviarMensagemInicial(suporteTecnico, '🤖 *Suporte técnico*\nAntes de encaminhar a um especialista irei pedir que digite as seguintes informações:\n\n🔹 *- Nome da empresa*\n🔹 *- Problema ocorrido*\n🔹 *- Nome para contato*\n\n*Após escrever as informações solicitadas digite:*\n 0️⃣ para enviar\n1️⃣ para retornar ao menu principal.');
+            await enviarMensagemInicial(suporteTecnico, '🤖 *Suporte técnico*\nAntes de encaminhar a um especialista irei pedir que digite as seguintes informações:\n\n🔹 *- Nome da empresa*\n🔹 *- Problema ocorrido*\n🔹 *- Nome para contato*\n\n*Após escrever as informações solicitadas digite:*\n0️⃣ para enviar\n1️⃣ para retornar ao menu principal.');
             state[from] = { step: 4 };
               return;
 
           case "2":
-            await enviarMensagemInicial(upgrade, '🤖 *Atualização de sistema*\nAntes de encaminhar a um especialista irei pedir que digite as seguintes informações:\n\n🔹 *- Nome da empresa*\n🔹 *- Qual sistema precisa de atualização e o tipo de atualização necessária*\n🔹 *- Nome para contato*\n\n*Após escrever as informações solicitadas digite:*\n 0️⃣ para enviar\n1️⃣ para retornar ao menu principal.');
+            await enviarMensagemInicial(upgrade, '🤖 *Atualização de sistema*\nAntes de encaminhar a um especialista irei pedir que digite as seguintes informações:\n\n🔹 *- Nome da empresa*\n🔹 *- Qual sistema precisa de atualização e o tipo de atualização necessária*\n🔹 *- Nome para contato*\n\n*Após escrever as informações solicitadas digite:*\n0️⃣ para enviar\n1️⃣ para retornar ao menu principal.');
             state[from] = { step: 4 };
             return;
 
           case "3":
-            await enviarMensagemInicial(especialista, '🤖 *Perfeito!*\nAntes de encaminhar a um especialista irei pedir que digite as seguintes informações:\n\n🔹 *- Nome da empresa*\n🔹 *- Motivo da solicitação*\n🔹 *- Nome para contato*\n\n*Após escrever as informações solicitadas digite:*\n 0️⃣ para enviar\n1️⃣ para retornar ao menu principal.');
+            await enviarMensagemInicial(especialista, '🤖 *Perfeito!*\nAntes de encaminhar a um especialista irei pedir que digite as seguintes informações:\n\n🔹 *- Nome da empresa*\n🔹 *- Motivo da solicitação*\n🔹 *- Nome para contato*\n\n*Após escrever as informações solicitadas digite:*\n0️⃣ para enviar\n1️⃣ para retornar ao menu principal.');
             state[from] = { step: 4 };
             return;
 
           case "4":
             await enviarMensagemTexto('🔁 Retornando ao menu principal...');
-            state[from] = { step: 6 };
+            await enviarMensagemInicial(logo, mensagemInicial);
+            state[from] = { step: 1 };
             return;
             
           default:
@@ -308,20 +310,23 @@ client.on ('message', async msg => {
               return;
       }
   }else if (userState.step === 4) {
+    if (!state[from].mensagens) state[from].mensagens = [];
+
     switch (mensagem) {
         case "1":
             await enviarMensagemTexto('🔁 Retornando ao menu principal...');
-            state[from] = { step: 6 };
+            await enviarMensagemInicial(logo, mensagemInicial);
+            state[from] = { step: 1 }; 
             return;
 
         case "0":
-            if (mensagemCliente.length === 0) {
+            if (state[from].mensagens.length === 0) {
                 await enviarMensagemTexto('⚠️ Nenhuma informação foi registrada ainda.');
                 return;
             }
 
             let mensagemFinal = `📩 *Novo pedido Atentus Cloud*\n\n👤 *Contato:* ${nomeContato}\n📱 *Número:* ${numeroContato}\n\n📋 *Informações enviadas:*\n`;
-            mensagemCliente.forEach((linha, index) => {
+            state[from].mensagens.forEach((linha, index) => {
                 mensagemFinal += `\n${index + 1}️⃣ ${linha}`;
             });
 
@@ -329,26 +334,27 @@ client.on ('message', async msg => {
             await client.sendMessage(hugoRosa, mensagemFinal);
             await enviarMensagemTexto('✅ Suas informações foram enviadas com sucesso! Em breve um especialista entrará em contato.');
             await enviarMensagemTexto('🤖 *Obrigado pelo contato!*');
-            delete state[from];
-            mensagemCliente = [];
+
+            delete state[from]; 
             return;
 
         default:
-            mensagemCliente.push(mensagem);
-            await enviarMensagemTexto('✍️ Informação registrada. Digite *0* para enviar ou *1* para cancelar e voltar ao menu.');
+            state[from].mensagens.push(mensagem); 
+            await enviarMensagemTexto('✍️ *Informação registrada.*\n\n0️⃣ *- ENVIAR*\n1️⃣ *- CANCELAR*');
             return;
     }
-
-}else if (userState.step === 5){
+}
+else if (userState.step === 5){
     switch (mensagem) {
         case "1":
-            await enviarMensagemInicial(especialista, '🤖 *Perfeito!*\nAntes de encaminhar a um especialista irei pedir que digite as seguintes informações:\n\n🔹 *- Nome da empresa*\n🔹 *- Tipo de projeto desejado*\n🔹 *- Nome para contato*\n\n*Após escrever as informações solicitadas digite:*\n 0️⃣ para enviar\n1️⃣ para retornar ao menu principal.');
+            await enviarMensagemInicial(especialista, '🤖 *Perfeito!*\nAntes de encaminhar a um especialista irei pedir que digite as seguintes informações:\n\n🔹 *- Nome da empresa*\n🔹 *- Tipo de projeto desejado*\n🔹 *- Nome para contato*\n\n*Após escrever as informações solicitadas digite:*\n0️⃣ para enviar\n1️⃣ para retornar ao menu principal.');
             state[from] = { step: 4 };
             return;
 
         case "2":
             await enviarMensagemTexto('🔁 Retornando ao menu principal...');
-            state[from] = { step: 6 };
+            await enviarMensagemInicial(logo, mensagemInicial);
+            state[from] = { step: 1 };
             return;
 
         case "3":
@@ -377,15 +383,10 @@ client.on ('message', async msg => {
         }
 
 }else if (userState.step === 6){
-    await enviarMensagemInicial(logo, mensagemInicial);
-    state[from] = { step: 1 };
-    return;
-
-}else if (userState.step === 7){
 switch (mensagem) {
 
     case "1":
-        await enviarMensagemInicial(souCliente, '🤖 *Perfeito!*\nAntes de encaminhar a um especialista irei pedir que digite as seguintes informações:\n\n🔹 *- Nome da empresa*\n🔹 *- Tipo de projeto desejado*\n🔹 *- Nome para contato*\n\n*Após escrever as informações solicitadas digite:*\n 0️⃣ para enviar\n1️⃣ para retornar ao menu principal.');
+        await enviarMensagemInicial(souCliente, '🤖 *Perfeito!*\nAntes de encaminhar a um especialista irei pedir que digite as seguintes informações:\n\n🔹 *- Nome da empresa*\n🔹 *- Tipo de projeto desejado*\n🔹 *- Nome para contato*\n\n*Após escrever as informações solicitadas digite:*\n0️⃣ para enviar\n1️⃣ para retornar ao menu principal.');
         state[from] = { step: 4 };
         return;
 
@@ -396,7 +397,8 @@ switch (mensagem) {
 
     case "3":
         await enviarMensagemTexto('🔁 Retornando ao menu principal...');
-        state[from] = { step: 6 };
+        await enviarMensagemInicial(logo, mensagemInicial);
+        state[from] = { step: 1 };
         return;
 
     case "4":
