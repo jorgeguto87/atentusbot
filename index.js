@@ -43,9 +43,9 @@ client.on('disconnected', reason => {
 });
 
 
-app.get('/', (req, res) => {
+app.get('/index', (req, res) => {
   console.log('Rota /pagina qr acessada');
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(express.static(path.join(__dirname, 'public', 'index.html')));
 });
 
 app.get('/status', (req, res) => {

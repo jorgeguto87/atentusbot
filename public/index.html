@@ -119,7 +119,7 @@
 <script>
     async function checkStatus() {
       try {
-        const res = await fetch('/status');
+        const res = await fetch(window.location.pathname.replace(/\/[^\/]*$/, '') + '/status');
         const data = await res.json();
 
         const qrcodeImg = document.getElementById('qrcode');
